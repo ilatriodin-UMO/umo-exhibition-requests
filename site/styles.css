@@ -5,3 +5,30 @@
 [hidden]{display:none!important}.secondary{background:#e8eef6;color:#173c66}.second-legend{font-size:14px;color:#50677f;font-weight:600;}
 
 select{font:inherit;width:100%;min-width:0;padding:13px 12px;border:1px solid #d9e1ea;border-radius:8px;color:#173353;background:#fff;min-height:51px}select:focus{outline:none;border-color:#487eaf;box-shadow:0 0 0 3px #467eaf15}select[aria-invalid=true]{border-color:#c75050}.vehicle-preview{margin:32px 0 0;border:1px solid #dce2eb;border-radius:18px;overflow:hidden;background:#eee}.vehicle-image{aspect-ratio:1.78;display:grid;place-items:center;overflow:hidden}.vehicle-image img{width:100%;height:100%;object-fit:contain;display:block}.vehicle-image p{padding:22px;color:#627185;text-align:center;font-size:15px}.vehicle-preview figcaption{padding:12px 18px;background:#fff;font-size:17px;font-weight:600;letter-spacing:.3px}@media(max-width:700px){.vehicle-preview{margin:0 0 24px}.vehicle-image{max-height:210px}.vehicle-image img{max-height:210px}}
+/* UMO palette: midnight background and ice-blue accents. */
+:root{color-scheme:dark;--umo-bg:#0a0c17;--umo-panel:#151925;--umo-ice:#e8f5ff;--umo-muted:#aeb7c7;--umo-line:#333a4a}
+body{background:var(--umo-bg);color:#fff}
+header,footer{border-color:var(--umo-line)}
+.brand-icon{background:var(--umo-ice);color:var(--umo-bg)}
+.private{background:#191e2a;border-color:var(--umo-line);color:var(--umo-ice)}
+.eyebrow,h1>span{color:#cbe8ff}
+.intro,.steps small,.card-heading p,.hint,.form-note,footer,.muted,.success p{color:var(--umo-muted)}
+.steps b{border-color:#465165;color:#cbe8ff}
+.card{background:var(--umo-panel);border-color:var(--umo-line);box-shadow:0 18px 55px #00000030}
+legend{color:#9bbbd3}legend span,.second-legend{color:#d3e0eb}
+label>span{color:#aeb7c7}
+input,select{background:#0f1320;color:#fff;border-color:#475166}
+input::placeholder{color:#a0aabc}
+input:focus,select:focus{border-color:#cbe8ff;box-shadow:0 0 0 3px #cbe8ff26}
+input[aria-invalid=true],select[aria-invalid=true]{border-color:#ff9494}
+.divider{background:var(--umo-line)}
+button,.download{background:var(--umo-ice);color:var(--umo-bg)}
+button:hover,.download:hover{background:#cce9ff}
+a:focus-visible,button:focus-visible{outline-color:#cbe8ff}
+footer a{color:#d5e9f8}
+.vehicle-preview{border-color:var(--umo-line);background:#eee}
+.vehicle-image p{color:#525c69}
+.vehicle-preview figcaption{background:#1c2230;color:var(--umo-ice)}
+.field-error{color:#ffaaaa}.error-banner{background:#3c2028;color:#ffd0d0}
+.success-icon{background:#163a30;color:#a2eac9}
+.secondary{background:#2c3444;color:var(--umo-ice)}
