@@ -25,5 +25,17 @@ test('database security and end-to-end submission',async()=>{
  await assert.rejects(db.query("UPDATE public.exhibition_requests SET model='changed'"),/permission denied/);
 });
 test('client validation matches required fields',()=>{assert.equal(validate({name:'Иван',phone:'8 (999) 123-45-67',inn:'7707083893',model:'UMO 5',quantity:'2'}).ok,true);assert.equal(validate({}).ok,false);});
+test('approved emails require verified ownership and remain private',async()=>{
+ await db.exec('RESET ROLE');
+ await db.exec(await fs.readFile(new URL('../supabase/owner-emails.sql',import.meta.url),'utf8'));
+ await db.exec("INSERT INTO public.exhibition_owner_emails VALUES ('visitor@example.test'),('pending@example.test'); INSERT INTO auth.users VALUES ('00000000-0000-4000-8000-000000000004','pending@example.test',null),('00000000-0000-4000-8000-000000000005','outsider@example.test',now());");
+ await identity(2);assert.equal((await db.query('SELECT public.is_exhibition_owner() AS ok')).rows[0].ok,true);
+ await assert.rejects(db.query('SELECT * FROM public.exhibition_owner_emails'),/permission denied/);
+ await assert.rejects(db.query("INSERT INTO public.exhibition_owner_emails VALUES ('outsider@example.test')"),/permission denied/);
+ await identity(4);assert.equal((await db.query('SELECT public.is_exhibition_owner() AS ok')).rows[0].ok,false);
+ await identity(5);assert.equal((await db.query('SELECT * FROM public.exhibition_requests')).rows.length,0);
+ await db.exec('RESET ROLE');await db.exec("UPDATE auth.users SET email_confirmed_at=now() WHERE email='pending@example.test'");
+ await identity(4);assert.equal((await db.query('SELECT public.is_exhibition_owner() AS ok')).rows[0].ok,true);
+});
 test.after(async()=>{await db.close();});
 
