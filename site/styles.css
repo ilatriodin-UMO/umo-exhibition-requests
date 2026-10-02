@@ -3,3 +3,5 @@
 .honeypot{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;}
 
 [hidden]{display:none!important}.secondary{background:#e8eef6;color:#173c66}.second-legend{font-size:14px;color:#50677f;font-weight:600;}
+
+select{font:inherit;width:100%;min-width:0;padding:13px 12px;border:1px solid #d9e1ea;border-radius:8px;color:#173353;background:#fff;min-height:51px}select:focus{outline:none;border-color:#487eaf;box-shadow:0 0 0 3px #467eaf15}select[aria-invalid=true]{border-color:#c75050}.vehicle-preview{margin:32px 0 0;border:1px solid #dce2eb;border-radius:18px;overflow:hidden;background:#eee}.vehicle-image{aspect-ratio:1.78;display:grid;place-items:center;overflow:hidden}.vehicle-image img{width:100%;height:100%;object-fit:contain;display:block}.vehicle-image p{padding:22px;color:#627185;text-align:center;font-size:15px}.vehicle-preview figcaption{padding:12px 18px;background:#fff;font-size:17px;font-weight:600;letter-spacing:.3px}@media(max-width:700px){.vehicle-preview{margin:0 0 24px}.vehicle-image{max-height:210px}.vehicle-image img{max-height:210px}}

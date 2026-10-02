@@ -1,6 +1,10 @@
 import {validate} from './lib/validation.mjs';
 import {SUPABASE_URL,SUPABASE_KEY} from './config.mjs';
 const form=document.querySelector('#request-form'),fields=document.querySelector('#fields'),send=document.querySelector('#send'),status=document.querySelector('#status');
+const model=form.elements.namedItem('model'),photo=document.querySelector('#vehicle-photo'),caption=document.querySelector('#vehicle-caption'),placeholder=document.querySelector('#vehicle-placeholder');
+const vehicles={'UMO 5':'images/umo-5.webp','UMO 8':'images/umo-8.webp'};
+function updateVehicle(){const src=vehicles[model.value];photo.hidden=!src;placeholder.hidden=!!src;caption.textContent=src?model.value:'Ваш будущий UMO';if(src){photo.src=src;photo.alt='Автомобиль '+model.value;}else{photo.removeAttribute('src');photo.alt='';}}
+model.addEventListener('change',updateVehicle);model.addEventListener('input',updateVehicle);form.addEventListener('reset',()=>setTimeout(updateVehicle,0));updateVehicle();
 let attempt='',payload='',busy=false;
 send.disabled=false;send.textContent='Отправить заявку';
 form.addEventListener('submit',async e=>{
